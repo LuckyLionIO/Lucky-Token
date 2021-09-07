@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.7;
 
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
@@ -9,7 +9,6 @@ contract LuckyToken is ERC20, Ownable {
     
     string private _name = "Lucky";
     string private _symbol = "LUCKY";
-    uint8 private _decimals = 18;
     
     uint256 private constant FAIR_LAUNCH = 1 * 1000000 * 10**18; //1 * 1000000 * 10**_decimals;
     uint256 private constant WAR_CHEST = 5 * 1000000 * 10**18;
@@ -36,10 +35,6 @@ contract LuckyToken is ERC20, Ownable {
         transferOwnership(_Owner);
     }
 
-    function decimals() public view virtual override returns (uint8) {
-        return _decimals;
-    }
-
     /**
      * @dev Returns the cap on the token's total supply.
      */
@@ -47,7 +42,7 @@ contract LuckyToken is ERC20, Ownable {
         return CAP;
     }
 
-    function mint(address _to, uint256 _amount) public onlyOwner {
+    function mint(address _to, uint256 _amount) external onlyOwner {
         _mint(_to, _amount);
     }
     
