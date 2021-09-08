@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "migrate": "truffle migrate --network bscTestnet --reset",
-    "compile": "truffle compile --network bscTestnet",
+    "compile": "npx builder compile",
     "test": "npx builder test",
     "coverage": "npx builder coverage"
   },
